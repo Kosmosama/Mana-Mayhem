@@ -1,0 +1,15 @@
+ColorRect
+ParallaxLayer
+ParallaxBackground
+TileMap
+Timer
+CollisionShape2D
+Area2D
+RayCast2D
+HSeparator
+HSlider
+VSeparator
+Label
+HBoxContainer
+ScrollContainer
+Sprite2D

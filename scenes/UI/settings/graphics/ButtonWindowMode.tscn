@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://uioncmjrxwib"]
+
+[ext_resource type="PackedScene" uid="uid://cedmii2l1mwfq" path="res://scenes/UI/settings/graphics/ButtonDropdown.tscn" id="1_vnqsc"]
+[ext_resource type="Script" path="res://scripts/UI/settings/graphics/ButtonWindowMode.cs" id="2_1aatm"]
+
+[node name="ButtonWindowMode" instance=ExtResource("1_vnqsc")]
+script = ExtResource("2_1aatm")
+
+[node name="LabelOption" parent="HBoxContainer" index="0"]
+text = "Window Mode"
+
+[node name="ButtonOption" parent="HBoxContainer" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 30)
+
+[connection signal="item_selected" from="HBoxContainer/ButtonOption" to="." method="OnWindowModeSelected"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://tfsvnmcr50o8"]
+
+[ext_resource type="Script" path="res://scripts/enemies/NormalEnemy.cs" id="1_i75ia"]
+[ext_resource type="Texture2D" uid="uid://bx6lnlpt41j4p" path="res://sprites/enemies/slimes_pink.png" id="1_qa6re"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fwjd"]
+radius = 36.0555
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_i75ia")
+
+[node name="GFX" type="Sprite2D" parent="."]
+scale = Vector2(2.34848, 2.34848)
+texture = ExtResource("1_qa6re")
+hframes = 6
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_0fwjd")

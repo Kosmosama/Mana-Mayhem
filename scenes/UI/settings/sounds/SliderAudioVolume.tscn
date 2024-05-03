@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://6fm3ebht2kfg"]
+
+[ext_resource type="FontFile" uid="uid://0o8nryuwpg0y" path="res://fonts/PeaberryMono.ttf" id="1_801ex"]
+[ext_resource type="Script" path="res://scripts/UI/settings/sound/SliderAudioVolume.cs" id="1_ke1rb"]
+
+[node name="SliderAudioVolume" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ke1rb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 462.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="LabelAudioTrackName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_801ex")
+text = "AUDIO_TRACK_NAME"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSliderAudio" type="HSlider" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 30)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[connection signal="value_changed" from="HBoxContainer/HSliderAudio" to="." method="OnSliderValueChanged"]

@@ -1,0 +1,17 @@
+res://autoload
+res://textures
+res://scenes/utilities
+res://scripts/utilities
+res://scripts/UI/settings/sound
+res://scenes/UI/settings/sounds
+res://scripts/enemies
+res://scripts/UI/Settings/Graphics
+res://scenes/UI/Settings/Graphics
+res://scenes/enemies
+res://scenes/player
+res://scripts/UI/Settings
+res://scenes/UI/Settings
+res://scripts/UI
+res://scenes/UI
+res://scenes/world
+res://fonts

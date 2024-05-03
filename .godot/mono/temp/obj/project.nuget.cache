@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "bYL+q7Kz3xhtZavkGp+ApA47I39l4AQqnMswCFWwkjQW6d272WPMPJ08QIyqEdh9EUuutKWN5xJsUkO5JSw2Ow==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kosmo\\Desktop\\AAGodot\\Proyectos\\Mana Mayhem\\ProyectoClase.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kosmo\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
+    "C:\\Users\\Kosmo\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",
+    "C:\\Users\\Kosmo\\.nuget\\packages\\godotsharpeditor\\4.2.1\\godotsharpeditor.4.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bshw3xt0fxnkt"]
+
+[ext_resource type="FontFile" uid="uid://0o8nryuwpg0y" path="res://fonts/PeaberryMono.ttf" id="1_7l0yh"]
+[ext_resource type="Script" path="res://scripts/UI/settings/SettingsMenu.cs" id="1_n6ygi"]
+[ext_resource type="PackedScene" uid="uid://dxp3f8ij2r0y4" path="res://scenes/UI/settings/SettingsTab.tscn" id="3_u8utn"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n6ygi")
+
+[node name="SettingsMenuBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="LabelSettingsTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_7l0yh")
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTab" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_u8utn")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonBack" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonBack" to="." method="OnButtonBackPressed"]
