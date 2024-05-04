@@ -15,5 +15,14 @@ texture = ExtResource("2_3mkyc")
 hframes = 4
 vframes = 12
 
+[node name="LabelHp" type="Label" parent="GFX"]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pfunc")
+
+[node name="TimerInvincibilityFrames" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

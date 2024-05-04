@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://uioncmjrxwib" path="res://scenes/UI/settings/graphics/ButtonWindowMode.tscn" id="1_0lmom"]
 [ext_resource type="PackedScene" uid="uid://6fm3ebht2kfg" path="res://scenes/UI/settings/sounds/SliderAudioVolume.tscn" id="1_jbkpg"]
-[ext_resource type="PackedScene" uid="uid://b6djbomukkyrv" path="res://scenes/UI/settings/graphics/ButtonResolutionMode.tscn" id="2_q1uj1"]
 [ext_resource type="PackedScene" uid="uid://fp7fjgdxck0k" path="res://scenes/UI/settings/controls/ButtonHotKeyRebind.tscn" id="3_51q57"]
+[ext_resource type="PackedScene" uid="uid://c7lt4713t0hw" path="res://scenes/UI/settings/graphics/CheckBoxVsync.tscn" id="3_qlxcl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ew3ca"]
 
@@ -36,8 +36,10 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.08)
 tab_alignment = 1
+current_tab = 1
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
@@ -79,7 +81,6 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dq8x2")
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
@@ -109,7 +110,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_eub4q")
 [node name="ButtonWindowMode" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0lmom")]
 layout_mode = 2
 
-[node name="ButtonResolutionMode" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_q1uj1")]
+[node name="CheckBoxVsync" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_qlxcl")]
 layout_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer"]

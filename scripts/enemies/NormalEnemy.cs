@@ -19,7 +19,7 @@ public partial class NormalEnemy : CharacterBody2D
 	{
 		player = GetTree().GetFirstNodeInGroup("Player") as Player;
 		sprite = GetNode<Sprite2D>("GFX");
-		timerAttackCooldown = GetNode<Timer>("%TimerAttackCooldown");
+		timerAttackCooldown = GetNode<Timer>("TimerAttackCooldown");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -39,10 +39,9 @@ public partial class NormalEnemy : CharacterBody2D
 	
 	private void Attack()
 	{
-		if (timerAttackCooldown.IsStopped() && isPlayerWithinRange && player.IsAlive())
+		if (timerAttackCooldown.IsStopped() && isPlayerWithinRange && player.CanBeAttacked())
 		{
-			player.HP -= damage;
-			GD.Print(player.HP);
+			player.Damage(damage);
 			timerAttackCooldown.Start();
 		}
 	}

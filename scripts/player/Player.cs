@@ -3,24 +3,29 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	Sprite2D sprite;
-
 	[Export]
 	float movementSpeed = 300;
 	[Export]
 	float hp = 100;
 	public float HP
 	{
-		get { return hp; }
-		set { hp = value; }
+		get { return HP; }
+		set
+		{
+			HP = (value < 0)? 0:value;
+		}
 	}
 
 	[Export]
 	float damage = 100;
 
+	Sprite2D sprite;
+	Timer timerInvincibilityFrames;
+
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("GFX");
+		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -52,7 +57,23 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public bool IsAlive()
+	public void Damage(float damageAmount)
+	{
+		hp -= damageAmount;
+		GD.Print(hp);
+
+		// Check if player is alive after damage
+		if (this.IsAlive())
+			// If it is alive, give him some invincibility to prevent instant death
+			timerInvincibilityFrames.Start();
+	}
+
+	public bool CanBeAttacked()
+	{
+		return this.IsAlive() && timerInvincibilityFrames.IsStopped();
+	}
+
+	private bool IsAlive()
 	{
 		if (hp > 0)
 		{

@@ -1,3 +1,5 @@
+CheckBox
+Label
 Timer
 CollisionShape2D
 Area2D
@@ -10,5 +12,4 @@ RayCast2D
 HSeparator
 HSlider
 VSeparator
-Label
 HBoxContainer

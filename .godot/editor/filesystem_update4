@@ -19,3 +19,7 @@ res://scenes/UI/MainMenu.tscn
 res://scenes/UI/settings/SettingsMenu.tscn
 res://scenes/UI/settings/SettingsTab.tscn
 res://scenes/UI/settings/sounds/SliderAudioVolume.tscn
+res://scenes/UI/settings/graphics/ButtonDropdown.tscn
+res://scenes/UI/settings/graphics/CheckBoxVsync.tscn
+res://scripts/UI/settings/graphics/CheckBoxVsync.cs
+res://scenes/UI/settings/graphics/ButtonWindowMode.tscn

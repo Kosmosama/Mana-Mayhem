@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7lt4713t0hw"]
+
+[ext_resource type="FontFile" uid="uid://0o8nryuwpg0y" path="res://fonts/PeaberryMono.ttf" id="1_m8qfm"]
+[ext_resource type="Script" path="res://scripts/UI/settings/graphics/CheckBoxVsync.cs" id="1_quukc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_quukc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LabelVsync" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_m8qfm")
+text = "VSYNC"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckBoxVsyncActive" type="CheckBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="toggled" from="HBoxContainer/CheckBoxVsyncActive" to="." method="OnVsyncCheckBoxToggled"]
