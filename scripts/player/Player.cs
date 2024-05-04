@@ -4,32 +4,19 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	Sprite2D sprite;
-	
-	// hp
-	// speed
-	// damage
-	// armor
-	// abilityCooldown
-	// abilitySize
 
-	// directionalMovement
-	// abilities (spawns with 1 level of normalAttack)
-	// uponDeathSaveTimeAndStateToLeaderboard
-
-	
 	[Export]
 	float movementSpeed = 300;
 	[Export]
 	float hp = 100;
+	public float HP
+	{
+		get { return hp; }
+		set { hp = value; }
+	}
+
 	[Export]
 	float damage = 100;
-
-	// [Export]
-	// float armor = 100;
-	// [Export]
-	// float abilityCooldown = 100;
-	// [Export]
-	// float abilitySize = 100;
 
 	public override void _Ready()
 	{
@@ -48,8 +35,8 @@ public partial class Player : CharacterBody2D
 		Vector2 mov = new Vector2(xMov, yMov);
 
 		SpriteFlipper(mov.X);
-
 		Velocity = mov.Normalized() * movementSpeed;
+		
 		MoveAndSlide();
 	}
 
@@ -63,5 +50,24 @@ public partial class Player : CharacterBody2D
 		{
 			sprite.FlipH = true;
 		}
+	}
+
+	public bool IsAlive()
+	{
+		if (hp > 0)
+		{
+			return true;
+		}
+		else
+		{
+			OnPlayerDeath();
+			return false;
+		}
+	}
+
+	private void OnPlayerDeath()
+	{
+		// Player death logic
+		GetTree().Quit();
 	}
 }

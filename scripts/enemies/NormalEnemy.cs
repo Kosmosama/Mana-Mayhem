@@ -9,22 +9,26 @@ public partial class NormalEnemy : CharacterBody2D
 	float hp = 10;
 	[Export]
 	float damage = 10;
+	bool isPlayerWithinRange;
 
 	Player player;
 	Sprite2D sprite;
+	Timer timerAttackCooldown;
 
 	public override void _Ready()
 	{
-		player = GetTree().GetFirstNodeInGroup("player") as Player;
+		player = GetTree().GetFirstNodeInGroup("Player") as Player;
 		sprite = GetNode<Sprite2D>("GFX");
+		timerAttackCooldown = GetNode<Timer>("%TimerAttackCooldown");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		Movement();
+		Attack();
 	}
 
-	public void Movement()
+	private void Movement()
 	{
 		Vector2 direction = Position.DirectionTo(player.Position);
 		Velocity = direction * movementSpeed;
@@ -33,6 +37,16 @@ public partial class NormalEnemy : CharacterBody2D
 		MoveAndSlide();
 	}
 	
+	private void Attack()
+	{
+		if (timerAttackCooldown.IsStopped() && isPlayerWithinRange && player.IsAlive())
+		{
+			player.HP -= damage;
+			GD.Print(player.HP);
+			timerAttackCooldown.Start();
+		}
+	}
+
 	private void SpriteFlipper(double x)
 	{
 		if (x > 0)
@@ -42,6 +56,24 @@ public partial class NormalEnemy : CharacterBody2D
 		else if (x < 0)
 		{
 			sprite.FlipH = false;
+		}
+	}
+
+	private void OnBodyEntered(Node2D body)
+	{
+		if (body is Player)
+		{
+			GD.Print("Player within range");
+			isPlayerWithinRange = true;
+		}
+	}
+
+	private void OnBodyExited(Node2D body)
+	{
+		if (body is Player)
+		{
+			GD.Print("Player exited range");
+			isPlayerWithinRange = false;
 		}
 	}
 }

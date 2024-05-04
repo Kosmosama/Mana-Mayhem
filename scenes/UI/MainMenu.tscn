@@ -35,7 +35,7 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 45
+theme_override_constants/separation = 130
 
 [node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -43,10 +43,10 @@ layout_mode = 2
 [node name="LabelGameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("1_asjhv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 120
 text = "MANA MAYHEM"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -56,8 +56,9 @@ layout_mode = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 80
 alignment = 1
 
 [node name="Separator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -74,34 +75,34 @@ layout_mode = 2
 
 [node name="ButtonPlay" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 32)
+custom_minimum_size = Vector2(300, 110)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_asjhv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
 [node name="ButtonBestTimes" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(450, 110)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_asjhv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 50
 text = "BEST TIMES"
 
 [node name="ButtonSettings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(450, 110)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_asjhv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 
 [node name="ButtonExit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(120, 110)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_asjhv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 50
 text = "EXIT"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_ojchr")]

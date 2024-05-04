@@ -2,8 +2,8 @@ res://scenes/world/World.tscn
 res://scenes/utilities/EnemySpawner.tscn
 res://scenes/enemies/Enemy.tscn
 res://scenes/player/Player.tscn
-res://scenes/utilities/HurtBox.tscn
 res://scenes/utilities/HitBox.tscn
+res://scenes/utilities/AttackRange.tscn
 res://autoload/SettingsSignalBus.cs
 res://scripts/enemies/NormalEnemy.cs
 res://scripts/player/Player.cs
@@ -13,5 +13,9 @@ res://scripts/UI/settings/graphics/ButtonResolutionMode.cs
 res://scripts/UI/settings/graphics/ButtonWindowMode.cs
 res://scripts/UI/settings/SettingsMenu.cs
 res://scripts/UI/settings/sound/SliderAudioVolume.cs
+res://scripts/utilities/AttackRange.cs
 res://scripts/utilities/HitBox.cs
-res://scripts/utilities/HurtBox.cs
+res://scenes/UI/MainMenu.tscn
+res://scenes/UI/settings/SettingsMenu.tscn
+res://scenes/UI/settings/SettingsTab.tscn
+res://scenes/UI/settings/sounds/SliderAudioVolume.tscn

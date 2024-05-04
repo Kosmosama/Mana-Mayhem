@@ -32,3 +32,4 @@ C:\Users\Kosmo\Desktop\AAGodot\Proyectos\Mana Mayhem\.godot\mono\temp\obj\Debug\
 C:\Users\Kosmo\Desktop\AAGodot\Proyectos\Mana Mayhem\.godot\mono\temp\obj\Debug\ProyectoClase.pdb
 C:\Users\Kosmo\Desktop\AAGodot\Proyectos\Mana Mayhem\.godot\mono\temp\obj\Debug\ProyectoClase.genruntimeconfig.cache
 C:\Users\Kosmo\Desktop\AAGodot\Proyectos\Mana Mayhem\.godot\mono\temp\obj\Debug\ref\ProyectoClase.dll
+C:\Users\Kosmo\Desktop\AAGodot\Proyectos\Mana Mayhem\.godot\mono\temp\obj\Debug\ProyectoClase.sourcelink.json
