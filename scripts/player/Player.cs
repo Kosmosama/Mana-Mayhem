@@ -76,7 +76,14 @@ public partial class Player : CharacterBody2D
 		UpdateHpLabel();
 
 		if (this.IsAlive())
-			timerInvincibilityFrames.Start();
+			MakeInvincible();
+	}
+
+	public void MakeInvincible()
+	{
+		timerInvincibilityFrames.Start();
+		sprite.SelfModulate = new Color(1, 1, 1, 0.5f);
+		// color to make red-ish => sprite.SelfModulate = new Color(1, 0.54f, 0.52f, 0.8f);
 	}
 
 	public bool CanBeAttacked()
@@ -107,4 +114,12 @@ public partial class Player : CharacterBody2D
 		// Player death logic
 		GetTree().Quit();
 	}
+
+	private void OnInvincibilityTimeout()
+	{
+		sprite.SelfModulate = new Color(1,1,1,1);
+	}
 }
+
+
+

@@ -34,3 +34,5 @@ value = 100.0
 show_percentage = false
 
 [node name="AbilityList" type="Node2D" parent="."]
+
+[connection signal="timeout" from="TimerInvincibilityFrames" to="." method="OnInvincibilityTimeout"]
