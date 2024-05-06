@@ -1,5 +1,9 @@
-CheckBox
+Node2D
+MarginContainer
+ProgressBar
+TextureProgressBar
 Label
+CheckBox
 Timer
 CollisionShape2D
 Area2D
@@ -9,7 +13,3 @@ ParallaxLayer
 ParallaxBackground
 TileMap
 RayCast2D
-HSeparator
-HSlider
-VSeparator
-HBoxContainer

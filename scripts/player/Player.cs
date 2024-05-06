@@ -6,7 +6,10 @@ public partial class Player : CharacterBody2D
 	[Export]
 	float movementSpeed = 300;
 	[Export]
-	float hp = 100;
+	float maxHp = 100;
+
+	float hp;
+
 	public float HP
 	{
 		get { return HP; }
@@ -21,16 +24,26 @@ public partial class Player : CharacterBody2D
 
 	Sprite2D sprite;
 	Timer timerInvincibilityFrames;
+	ProgressBar progressBarHp;
 
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("GFX");
 		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
+		progressBarHp = GetNode<ProgressBar>("ProgressBar");
+
+		Initialize();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		Movement();
+	}
+
+	public void Initialize()
+	{
+		hp = maxHp;
+		progressBarHp.MaxValue = maxHp;
 	}
 
 	private void Movement()
@@ -60,11 +73,9 @@ public partial class Player : CharacterBody2D
 	public void Damage(float damageAmount)
 	{
 		hp -= damageAmount;
-		GD.Print(hp);
+		UpdateHpLabel();
 
-		// Check if player is alive after damage
 		if (this.IsAlive())
-			// If it is alive, give him some invincibility to prevent instant death
 			timerInvincibilityFrames.Start();
 	}
 
@@ -84,6 +95,11 @@ public partial class Player : CharacterBody2D
 			OnPlayerDeath();
 			return false;
 		}
+	}
+
+	private void UpdateHpLabel()
+	{
+		progressBarHp.Value = hp;
 	}
 
 	private void OnPlayerDeath()
