@@ -1,10 +1,7 @@
+res://scenes/player/Player.tscn
 res://scenes/world/World.tscn
 res://scenes/utilities/EnemySpawner.tscn
-res://scenes/player/Player.tscn
 res://scenes/enemies/Enemy.tscn
-res://scenes/UI/settings/SettingsTab.tscn
-res://scenes/UI/settings/graphics/CheckBoxVsync.tscn
-res://scenes/UI/settings/graphics/ButtonWindowMode.tscn
 res://autoload/SettingsSignalBus.cs
 res://scripts/enemies/NormalEnemy.cs
 res://scripts/player/Player.cs

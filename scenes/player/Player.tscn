@@ -1,10 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc5hl2lq8k6wy"]
+[gd_scene load_steps=7 format=3 uid="uid://dc5hl2lq8k6wy"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_i7hqg"]
 [ext_resource type="Texture2D" uid="uid://co7inp480ybni" path="res://sprites/player/Skeleton.png" id="2_3mkyc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfunc"]
 radius = 30.2655
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya7e4"]
+bg_color = Color(0.32549, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4it5r"]
+bg_color = Color(0.8, 0, 0.0117647, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_i14mw"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ya7e4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_4it5r")
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_i7hqg")
@@ -23,11 +52,13 @@ wait_time = 0.25
 one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 1
 custom_minimum_size = Vector2(100, 10)
 offset_left = -50.0
 offset_top = 40.0
 offset_right = 50.0
 offset_bottom = 56.0
+theme = SubResource("Theme_i14mw")
 theme_override_colors/font_color = Color(0.909804, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.854902, 0, 0, 1)
 value = 100.0
