@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Player : CharacterBody2D
 {
@@ -20,7 +22,10 @@ public partial class Player : CharacterBody2D
 	}
 
 	[Export]
-	float damage = 100;
+	float damage = 1;
+
+	List<IEnemy> enemiesWithinRange;
+	
 
 	Sprite2D sprite;
 	Timer timerInvincibilityFrames;
@@ -31,6 +36,8 @@ public partial class Player : CharacterBody2D
 		sprite = GetNode<Sprite2D>("GFX");
 		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
 		progressBarHp = GetNode<ProgressBar>("ProgressBar");
+
+		enemiesWithinRange = new List<IEnemy>();
 
 		Initialize();
 	}
@@ -119,7 +126,51 @@ public partial class Player : CharacterBody2D
 	{
 		sprite.SelfModulate = new Color(1,1,1,1);
 	}
+
+	private void OrderListByDistance()
+	{
+		enemiesWithinRange.OrderBy(enemy => enemy.GetPosition().DistanceTo(Position)).ToList();
+	}
+
+	public List<IEnemy> GetClosestEnemy(int numberOfCloseEnemies)
+	{
+		/*
+		* This method orders the list of enemies by distance and retrieves the specified number of closest enemies.
+		* If the number of closest enemies requested exceeds the total number of enemies within range, all enemies within range are returned.
+		*/
+
+		OrderListByDistance();
+		List<IEnemy> closestEnemies = new List<IEnemy>();
+
+		if (numberOfCloseEnemies > enemiesWithinRange.Count())
+		{
+			closestEnemies = enemiesWithinRange;
+
+		}
+		else
+		{
+			for (int i = 0; i < numberOfCloseEnemies; i++)
+			{
+				closestEnemies.Add(enemiesWithinRange[i]);
+			}
+		}
+		return closestEnemies;
+	}
+
+	private void OnAttackRangeEntered(Node2D body)
+	{
+		if (body is IEnemy enemy)
+		{
+			enemiesWithinRange.Add(enemy);
+		}
+	}
+
+	private void OnAttackRangeExited(Node2D body)
+	{
+		if (body is IEnemy enemy)
+		{
+			enemiesWithinRange.Remove(enemy);
+			OrderListByDistance();
+		}
+	}
 }
-
-
-

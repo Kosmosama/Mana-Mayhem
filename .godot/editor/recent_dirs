@@ -1,3 +1,7 @@
+res://scripts/abilities/managers
+res://scenes/abilities/managers
+res://scripts/abilities
+res://scenes/abilities
 C:/Users/Kosmo/Desktop/AAGodot/Proyectos/Mana Mayhem/export
 res://scripts/UI/settings/graphics
 res://scenes/UI/settings/graphics
@@ -16,5 +20,3 @@ res://scripts/UI/Settings
 res://scenes/UI/Settings
 res://scripts/UI
 res://scenes/UI
-res://scenes/world
-res://fonts

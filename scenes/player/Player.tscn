@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc5hl2lq8k6wy"]
+[gd_scene load_steps=9 format=3 uid="uid://dc5hl2lq8k6wy"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_i7hqg"]
 [ext_resource type="Texture2D" uid="uid://co7inp480ybni" path="res://sprites/player/Skeleton.png" id="2_3mkyc"]
+[ext_resource type="PackedScene" uid="uid://bitiwg8ptdfkg" path="res://scenes/abilities/managers/MagicBoltManager.tscn" id="3_1yv7q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfunc"]
 radius = 30.2655
@@ -35,6 +36,9 @@ corner_radius_bottom_left = 10
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ya7e4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_4it5r")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_envao"]
+size = Vector2(33.9875, 20)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_i7hqg")
 
@@ -45,6 +49,7 @@ hframes = 4
 vframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_pfunc")
 
 [node name="TimerInvincibilityFrames" type="Timer" parent="."]
@@ -66,4 +71,15 @@ show_percentage = false
 
 [node name="AbilityList" type="Node2D" parent="."]
 
+[node name="MagicBoltManager" parent="AbilityList" instance=ExtResource("3_1yv7q")]
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+visible = false
+scale = Vector2(54, 52)
+shape = SubResource("RectangleShape2D_envao")
+
 [connection signal="timeout" from="TimerInvincibilityFrames" to="." method="OnInvincibilityTimeout"]
+[connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEntered"]
+[connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExited"]

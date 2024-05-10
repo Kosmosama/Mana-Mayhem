@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://kt7l5yicnjjv"]
+
+[ext_resource type="Script" path="res://scripts/abilities/instantiable/MagicBolt.cs" id="1_53kkl"]
+[ext_resource type="Texture2D" uid="uid://cwyrvhdmx4d5f" path="res://sprites/abilities/MagicBolt.png" id="2_by2pg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2b4w"]
+radius = 6.0
+height = 24.0
+
+[node name="MagicBolt" type="Area2D"]
+script = ExtResource("1_53kkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j2b4w")
+
+[node name="GFX" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_by2pg")

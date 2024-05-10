@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class NormalEnemy : CharacterBody2D
+public partial class NormalEnemy : CharacterBody2D, IEnemy
 {
 	[Export] 
 	float movementSpeed = 200;
@@ -28,7 +28,7 @@ public partial class NormalEnemy : CharacterBody2D
 		Attack();
 	}
 
-	private void Movement()
+	public void Movement()
 	{
 		Vector2 direction = Position.DirectionTo(player.Position);
 		Velocity = direction * movementSpeed;
@@ -37,15 +37,6 @@ public partial class NormalEnemy : CharacterBody2D
 		MoveAndSlide();
 	}
 	
-	private void Attack()
-	{
-		if (timerAttackCooldown.IsStopped() && isPlayerWithinRange && player.CanBeAttacked())
-		{
-			player.Damage(damage);
-			timerAttackCooldown.Start();
-		}
-	}
-
 	private void SpriteFlipper(double x)
 	{
 		if (x > 0)
@@ -56,6 +47,20 @@ public partial class NormalEnemy : CharacterBody2D
 		{
 			sprite.FlipH = false;
 		}
+	}
+
+	public void Attack()
+	{
+		if (timerAttackCooldown.IsStopped() && isPlayerWithinRange && player.CanBeAttacked())
+		{
+			player.Damage(damage);
+			timerAttackCooldown.Start();
+		}
+	}
+
+	public Vector2 GetPosition()
+	{
+		return Position;
 	}
 
 	private void OnBodyEntered(Node2D body)
