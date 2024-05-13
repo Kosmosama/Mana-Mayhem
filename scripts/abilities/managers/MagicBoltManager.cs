@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 
 public partial class MagicBoltManager : Node2D
 {
@@ -34,11 +35,13 @@ public partial class MagicBoltManager : Node2D
 
 	PackedScene magicBolt;
 	Timer magicBoltCooldown;
+	Player player;
 
 	public override void _Ready()
 	{
 		magicBolt = (PackedScene)ResourceLoader.Load("res://scenes/abilities/instantiable/MagicBolt.tscn");
 		magicBoltCooldown = GetNode<Timer>("MagicBoltCooldown");
+		player = GetTree().GetFirstNodeInGroup("Player") as Player;
 
 		Initialize();
 	}
@@ -65,14 +68,56 @@ public partial class MagicBoltManager : Node2D
 	// func: updateDuration
 	// ...
 
+	private List<Vector2> GetEnemyPositions(int numberOfCloseEnemies)
+	{
+		List<Vector2> positions = new List<Vector2>();
+
+		List<IEnemy> closestEnemies = player.GetClosestEnemy(numberOfCloseEnemies);
+
+		if (closestEnemies.Count != 0)
+		{
+			if (numberOfCloseEnemies == closestEnemies.Count)
+			{
+				foreach (IEnemy enemy in closestEnemies)
+				{
+					positions.Add(enemy.GetPosition());
+				}
+			}
+			else if (closestEnemies.Count > numberOfCloseEnemies)
+			{
+				for (int i = 0; i < numberOfCloseEnemies; i++)
+				{
+					positions.Add(closestEnemies[i].GetPosition());
+				}
+			}
+			else
+			{
+				for (int i = 0; i < (closestEnemies.Count / numberOfCloseEnemies); i++)
+				{
+					foreach (IEnemy enemy in closestEnemies)
+					{
+						positions.Add(enemy.GetPosition());
+					}
+				}
+
+				for (int j = 0; j < (numberOfCloseEnemies - positions.Count); j++)
+				{
+					positions.Add(closestEnemies[j].GetPosition());
+				}
+			}
+		}
+		
+
+		return positions;
+	}
+
 	private void OnMagicBoltCooldownTimeout()
 	{
-		for (int p = 1; p <= penetration; p++)
+		// if number of enemies < 1, fire random
+		for (int p = 0; p < penetration; p++)
 		{
 			MagicBolt magicBoltAttack = (MagicBolt) magicBolt.Instantiate();
-
-	//		ice_spear iceSpearAttack = (ice_spear)iceSpear.Instantiate();
-	// 		iceSpearAttack.Position = Position;
+			magicBoltAttack.Position = player.Position;
 	// 		iceSpearAttack.targetLocation = GetClosestTarget();
 	// 		iceSpearAttack.level = iceSpearLevel;
 	// 		AddChild(iceSpearAttack);

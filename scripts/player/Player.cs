@@ -132,6 +132,11 @@ public partial class Player : CharacterBody2D
 		enemiesWithinRange.OrderBy(enemy => enemy.GetPosition().DistanceTo(Position)).ToList();
 	}
 
+	/// <summary>
+	/// Retrieves a list of the closest enemies within a specified range.
+	/// </summary>
+	/// <param name="numberOfCloseEnemies">The number of closest enemies to retrieve.</param>
+	/// <returns>A list of the closest enemies. If the number of requested enemies exceeds the total number of enemies within range, all enemies within range are returned.</returns>
 	public List<IEnemy> GetClosestEnemy(int numberOfCloseEnemies)
 	{
 		/*

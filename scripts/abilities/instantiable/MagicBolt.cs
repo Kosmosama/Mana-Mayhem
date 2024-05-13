@@ -11,6 +11,7 @@ public partial class MagicBolt : Area2D
 	angle = GlobalPosition.DirectionTo(targetLocation);
 	rotation = angle.Angle() + Mathf.DegToRad(135);
 	*/
+	public Vector2 targetLocation;
 
 	public override void _Ready()
 	{

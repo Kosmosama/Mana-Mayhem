@@ -1,8 +1,8 @@
+res://scenes/abilities/instantiable/MagicBolt.tscn
 res://scenes/world/World.tscn
 res://scenes/utilities/EnemySpawner.tscn
 res://scenes/player/Player.tscn
 res://scenes/enemies/Enemy.tscn
-res://scenes/abilities/instantiable/MagicBolt.tscn
 res://scenes/abilities/managers/MagicBoltManager.tscn
 res://autoload/SettingsSignalBus.cs
 res://scripts/abilities/instantiable/MagicBolt.cs
