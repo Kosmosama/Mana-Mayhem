@@ -5,27 +5,6 @@ using System.Collections.Generic;
 
 public partial class MagicBoltManager : Node2D
 {
-	// private void _on_ice_spear_timer_attack_timer_timeout()
-	// {
-	// 	if (iceSpearAmmo > 0)
-	// 	{
-	// 		ice_spear iceSpearAttack = (ice_spear)iceSpear.Instantiate();
-	// 		iceSpearAttack.Position = Position;
-	// 		iceSpearAttack.targetLocation = GetClosestTarget();
-	// 		iceSpearAttack.level = iceSpearLevel;
-	// 		AddChild(iceSpearAttack);
-	// 		iceSpearAmmo --;
-	// 		if (iceSpearAmmo > 0)
-	// 		{
-	// 			iceSpearTimerAttackTimer.Start();
-	// 		}
-	// 		else
-	// 		{
-	// 			iceSpearTimerAttackTimer.Stop();
-	// 		}
-	// 	}
-	// }
-
 	int penetration; // number of enemies that a magic bolt can hit, more with level | to::child
 	float magicCooldown; // seconds to await for instancing another magic bolt batch
 	float magicDuration; // seconds to await to de-instance a magic bolt if it hasnt hit anything | to::child
@@ -65,9 +44,6 @@ public partial class MagicBoltManager : Node2D
 		magicBoltCooldown.WaitTime = waitTime;
 	}
 
-	// func: updateDuration
-	// ...
-
 	private List<Vector2> GetEnemyPositions(int numberOfCloseEnemies)
 	{
 		List<Vector2> positions = new List<Vector2>();
@@ -106,31 +82,35 @@ public partial class MagicBoltManager : Node2D
 				}
 			}
 		}
-		
 
 		return positions;
 	}
 
+	private void FireMagicBolt(Vector2 target)
+	{
+		MagicBolt magicBoltAttack = (MagicBolt) magicBolt.Instantiate();
+		magicBoltAttack.Position = Position;
+		magicBoltAttack.TargetLocation = target;
+		AddChild(magicBoltAttack);
+	}
+
 	private void OnMagicBoltCooldownTimeout()
 	{
-		// if number of enemies < 1, fire random
-		for (int p = 0; p < penetration; p++)
+		List<Vector2> enemyPositions = GetEnemyPositions(magicNumber);
+
+		if (enemyPositions.Count == 0)
 		{
-			MagicBolt magicBoltAttack = (MagicBolt) magicBolt.Instantiate();
-			magicBoltAttack.Position = player.Position;
-	// 		iceSpearAttack.targetLocation = GetClosestTarget();
-	// 		iceSpearAttack.level = iceSpearLevel;
-	// 		AddChild(iceSpearAttack);
-	// 		iceSpearAmmo --;
-	// 		if (iceSpearAmmo > 0)
-	// 		{
-	// 			iceSpearTimerAttackTimer.Start();
-	// 		}
-	// 		else
-	// 		{
-	// 			iceSpearTimerAttackTimer.Stop();
-	// 		}
-			AddChild(magicBoltAttack);
+			Vector2 randomPos = player.Position + new Vector2(Mathf.Cos(GD.Randf() * 2 * Mathf.Pi), Mathf.Sin(GD.Randf() * 2 * Mathf.Pi));
+			FireMagicBolt(randomPos);
 		}
+		else
+		{
+			foreach (Vector2 enemyPos in enemyPositions)
+			{
+				FireMagicBolt(enemyPos);
+			}
+		}
+
+		magicBoltCooldown.Start();
 	}
 }
