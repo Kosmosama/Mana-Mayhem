@@ -8,11 +8,20 @@ radius = 6.0
 height = 24.0
 
 [node name="MagicBolt" type="Area2D"]
+scale = Vector2(0.2, 0.201)
 script = ExtResource("1_53kkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_j2b4w")
 
 [node name="GFX" type="Sprite2D" parent="."]
+rotation = 1.5708
 scale = Vector2(2, 2)
 texture = ExtResource("2_by2pg")
+
+[node name="TimerDuration" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="timeout" from="TimerDuration" to="." method="OnTimerDurationTimeout"]

@@ -12,15 +12,6 @@ public partial class Player : CharacterBody2D
 
 	float hp;
 
-	public float HP
-	{
-		get { return HP; }
-		set
-		{
-			HP = (value < 0)? 0:value;
-		}
-	}
-
 	[Export]
 	float damage = 1;
 
@@ -82,7 +73,7 @@ public partial class Player : CharacterBody2D
 		hp -= damageAmount;
 		UpdateHpLabel();
 
-		if (this.IsAlive())
+		if (IsAlive())
 			MakeInvincible();
 	}
 
@@ -106,7 +97,7 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-			OnPlayerDeath();
+			OnDeath();
 			return false;
 		}
 	}
@@ -116,7 +107,7 @@ public partial class Player : CharacterBody2D
 		progressBarHp.Value = hp;
 	}
 
-	private void OnPlayerDeath()
+	public void OnDeath()
 	{
 		// Player death logic
 		GetTree().Quit();
@@ -132,17 +123,8 @@ public partial class Player : CharacterBody2D
 		enemiesWithinRange.OrderBy(enemy => enemy.GetPosition().DistanceTo(Position)).ToList();
 	}
 
-	/// <summary>
-	/// Retrieves a list of the closest enemies within a specified range.
-	/// </summary>
-	/// <param name="numberOfCloseEnemies">The number of closest enemies to retrieve.</param>
-	/// <returns>A list of the closest enemies. If the number of requested enemies exceeds the total number of enemies within range, all enemies within range are returned.</returns>
 	public List<IEnemy> GetClosestEnemy(int numberOfCloseEnemies)
 	{
-		/*
-		* This method orders the list of enemies by distance and retrieves the specified number of closest enemies.
-		* If the number of closest enemies requested exceeds the total number of enemies within range, all enemies within range are returned.
-		*/
 
 		OrderListByDistance();
 		List<IEnemy> closestEnemies = new List<IEnemy>();

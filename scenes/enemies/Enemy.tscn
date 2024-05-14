@@ -33,5 +33,10 @@ shape = SubResource("CircleShape2D_dfaix")
 wait_time = 0.5
 one_shot = true
 
+[node name="TimerInvincibilityFrames" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]
+[connection signal="timeout" from="TimerInvincibilityFrames" to="." method="OnInvincibilityTimeout"]

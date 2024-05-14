@@ -3,7 +3,7 @@ using System;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 
-public partial class MagicBoltManager : Node2D
+public partial class MagicBoltManager : Node
 {
 	int penetration; // number of enemies that a magic bolt can hit, more with level | to::child
 	float magicCooldown; // seconds to await for instancing another magic bolt batch
@@ -89,7 +89,7 @@ public partial class MagicBoltManager : Node2D
 	private void FireMagicBolt(Vector2 target)
 	{
 		MagicBolt magicBoltAttack = (MagicBolt) magicBolt.Instantiate();
-		magicBoltAttack.Position = Position;
+		magicBoltAttack.Position = player.Position;
 		magicBoltAttack.TargetLocation = target;
 		AddChild(magicBoltAttack);
 	}

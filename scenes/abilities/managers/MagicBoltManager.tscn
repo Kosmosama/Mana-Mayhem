@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/abilities/managers/MagicBoltManager.cs" id="1_ftcsx"]
 
-[node name="MagicBoltManager" type="Node2D"]
+[node name="MagicBoltManager" type="Node"]
 script = ExtResource("1_ftcsx")
 
 [node name="MagicBoltCooldown" type="Timer" parent="."]
