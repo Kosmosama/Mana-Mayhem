@@ -15,7 +15,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 	Player player;
 	Sprite2D sprite;
 	Timer timerAttackCooldown;
-	Timer timerInvincibilityFrames;
+	Timer timerDamageFeedback;
 	PackedScene xpOrb;
 
 	public override void _Ready()
@@ -23,7 +23,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		player = GetTree().GetFirstNodeInGroup("Player") as Player;
 		sprite = GetNode<Sprite2D>("GFX");
 		timerAttackCooldown = GetNode<Timer>("TimerAttackCooldown");
-		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
+		timerDamageFeedback = GetNode<Timer>("TimerDamageFeedback");
 		xpOrb = (PackedScene)ResourceLoader.Load("res://scenes/world/Xp/XpOrb.tscn");
 	}
 
@@ -68,7 +68,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		return Position;
 	}
 
-	private bool IsAlive()
+	public bool IsAlive()
 	{
 		if (hp > 0)
 		{
@@ -86,18 +86,13 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		hp -= damageAmount;
 
 		if (IsAlive())
-			MakeInvincible();
+			DamageFeedback();
 	}
 
-	public void MakeInvincible()
+	public void DamageFeedback()
 	{
-		timerInvincibilityFrames.Start();
+		timerDamageFeedback.Start();
 		sprite.SelfModulate = new Color(1, 1, 1, 0.5f);
-	}
-
-	public bool CanBeAttacked()
-	{
-		return this.IsAlive() && timerInvincibilityFrames.IsStopped();
 	}
 
 	private void GenerateXpOrb()

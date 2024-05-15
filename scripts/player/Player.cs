@@ -126,7 +126,7 @@ public partial class Player : CharacterBody2D
 
 	private void OrderListByDistance()
 	{
-		enemiesWithinRange.OrderBy(enemy => enemy.GetPosition().DistanceTo(Position)).ToList();
+		enemiesWithinRange = enemiesWithinRange.OrderBy(enemy => enemy.GetPosition().DistanceTo(Position)).ToList();
 	}
 
 	public List<IEnemy> GetClosestEnemy(int numberOfCloseEnemies)
@@ -179,30 +179,55 @@ public partial class Player : CharacterBody2D
 		progressBarXp.Value = xpCollected;
 	}
 
+	// private void CalculateXp(float xp)
+	// {
+	// 	float newCollected = xpCollected + xp;
+	// 	float remainder = 0;
+	// 	if (newCollected >= xpNeeded)
+	// 	{
+	// 		xpNeeded = level * 2;
+	// 		remainder = xpNeeded % newCollected;
+	// 		xpCollected = 0 + remainder;
+	// 		LevelUp();
+	// 	}
+	// 	else
+	// 	{
+	// 		xpCollected = newCollected;
+	// 	}
+
+	// 	UpdateXpProgressBar();
+	// }
+
 	private void CalculateXp(float xp)
 	{
-		// if amount exceeds max -> levelup, max + level * 2, amount%priorMax = amount
-		float newCollected = xpCollected + xp;
-		if (newCollected >= xpNeeded)
-		{
-			xpNeeded *= level * 2;
-			xpCollected = newCollected % xpNeeded;
-			LevelUp();
-		}
-		else
-		{
-			xpCollected = newCollected;
-		}
+		// float newCollected = xpCollected + xp;
+		// if (newCollected >= xpNeeded)
+		// {
+		// 	LevelUp();
+		// 	newCollected -= xpNeeded; 
+		// 	xpNeeded = level * 2;
+		// 	xpCollected = newCollected;
+			
+		// }
+		// else
+		// {
+		// 	xpCollected = newCollected;
+			
+		// }
+		xpCollected += xp;
 
 		UpdateXpProgressBar();
+		GD.Print($"Level {level}-------------------");
+		GD.Print("Current XP: ", xpCollected);
+		GD.Print("Max XP: ", xpNeeded);
 	}
 
 	private void OnXpOrbEntered(Area2D area)
 	{
 		if (area is XpOrb orb)
 		{
-			CalculateXp(orb.XpAmount);
 			area.QueueFree();
+			CalculateXp(orb.XpAmount);
 		}
 	}
 }

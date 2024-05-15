@@ -35,7 +35,7 @@ public partial class MagicBoltManager : Node
 		magicCooldown = 1f;
 		magicDuration = 0.5f;
 		magicSize = 1f;
-		magicNumber = 1;
+		magicNumber = 3;
 		damage = 5f;
 	}
 
@@ -66,9 +66,27 @@ public partial class MagicBoltManager : Node
 					positions.Add(closestEnemies[i].GetPosition());
 				}
 			}
+			// else
+			// {
+			// 	for (int i = 0; i < (closestEnemies.Count / numberOfCloseEnemies); i++)
+			// 	{
+			// 		foreach (IEnemy enemy in closestEnemies)
+			// 		{
+			// 			positions.Add(enemy.GetPosition());
+			// 		}
+			// 	}
+
+			// 	for (int j = 0; j < (numberOfCloseEnemies - positions.Count); j++)
+			// 	{
+			// 		positions.Add(closestEnemies[j].GetPosition());
+			// 	}
+			// }
 			else
 			{
-				for (int i = 0; i < (closestEnemies.Count / numberOfCloseEnemies); i++)
+				int repeats = numberOfCloseEnemies / closestEnemies.Count;
+				int remainder = numberOfCloseEnemies % closestEnemies.Count;
+
+				for (int i = 0; i < repeats; i++)
 				{
 					foreach (IEnemy enemy in closestEnemies)
 					{
@@ -76,7 +94,7 @@ public partial class MagicBoltManager : Node
 					}
 				}
 
-				for (int j = 0; j < (numberOfCloseEnemies - positions.Count); j++)
+				for (int j = 0; j < remainder; j++)
 				{
 					positions.Add(closestEnemies[j].GetPosition());
 				}

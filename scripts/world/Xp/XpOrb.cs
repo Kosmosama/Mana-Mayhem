@@ -55,7 +55,7 @@ public partial class XpOrb : Area2D
 		// Load the medium orb sprite
 		Texture2D texture = (Texture2D)GD.Load("res://sprites/world/Xp/XpOrbMedium.png");
 		sprite.Texture = texture;
-		xpAmount = 2;
+		xpAmount = 1;
 	}
 
 	private void BeLarge()
@@ -63,6 +63,6 @@ public partial class XpOrb : Area2D
 		// Load the large orb sprite
 		Texture2D texture = (Texture2D)GD.Load("res://sprites/world/Xp/XpOrbLarge.png");
 		sprite.Texture = texture;
-		xpAmount = 3;
+		xpAmount = 1;
 	}
 }

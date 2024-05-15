@@ -34,7 +34,7 @@ public partial class MagicBolt : Area2D
 		attackSize = 1;
 
 		// Stats
-		damage = 2 * damageAmplification;
+		damage = 200 * damageAmplification;
 		speed = 500f;
 		penetration = 0;
 
@@ -59,7 +59,7 @@ public partial class MagicBolt : Area2D
 
 	public void AttackEnemy(IEnemy enemy)
 	{
-		if (enemy.CanBeAttacked())
+		if (enemy.IsAlive())
 		{
 			enemy.Damage(damage);
 		}
