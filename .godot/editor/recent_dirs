@@ -1,3 +1,4 @@
+res://scripts/utilities
 res://scripts/world/Xp
 res://scenes/world/Xp
 res://scripts/abilities/managers
@@ -8,7 +9,6 @@ C:/Users/Kosmo/Desktop/AAGodot/Proyectos/Mana Mayhem/export
 res://scripts/UI/settings/graphics
 res://scenes/UI/settings/graphics
 res://autoload
-res://scripts/utilities
 res://textures
 res://scenes/utilities
 res://scripts/UI/settings/sound

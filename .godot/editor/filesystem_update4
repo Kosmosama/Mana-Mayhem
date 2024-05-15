@@ -22,3 +22,4 @@ res://scenes/world/Xp/XpOrbSmall.tscn
 res://scenes/world/Xp/XpOrb.tscn
 res://scripts/world/Xp/XpOrbSmall.cs
 res://scripts/world/Xp/XpOrb.cs
+res://scripts/utilities/EnemySpawner.cs

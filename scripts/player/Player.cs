@@ -198,7 +198,7 @@ public partial class Player : CharacterBody2D
 	// 	UpdateXpProgressBar();
 	// }
 
-	private void CalculateXp(float xp)
+	private void CalculateXp(float xp, XpOrb orb)
 	{
 		// float newCollected = xpCollected + xp;
 		// if (newCollected >= xpNeeded)
@@ -217,7 +217,7 @@ public partial class Player : CharacterBody2D
 		xpCollected += xp;
 
 		UpdateXpProgressBar();
-		GD.Print($"Level {level}-------------------");
+		GD.Print($"Level {level}-------------------{orb.Name}");
 		GD.Print("Current XP: ", xpCollected);
 		GD.Print("Max XP: ", xpNeeded);
 	}
@@ -227,7 +227,7 @@ public partial class Player : CharacterBody2D
 		if (area is XpOrb orb)
 		{
 			area.QueueFree();
-			CalculateXp(orb.XpAmount);
+			CalculateXp(orb.XpAmount, orb);
 		}
 	}
 }

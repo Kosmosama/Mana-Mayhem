@@ -102,6 +102,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		XpOrb instantiableXpOrb = (XpOrb)xpOrb.Instantiate();
 		instantiableXpOrb.Position = Position;
 
+		// xpOrbContainer.AddChild(instantiableXpOrb); // If done like this, gives errors (I don't know why)
 		CallDeferred("add_xp_orb", xpOrbContainer, instantiableXpOrb);
 	}
 

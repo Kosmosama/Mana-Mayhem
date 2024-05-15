@@ -4,12 +4,13 @@ using System;
 public partial class XpOrb : Area2D
 {
 	[Export]
-	float xpAmount;
+	float xpAmount = 1;
 
 	public float XpAmount
 	{
 		get { return xpAmount; }
 	}
+	// on get, QueueFree?
 
 	Sprite2D sprite;
 
@@ -23,21 +24,21 @@ public partial class XpOrb : Area2D
 	public void BecomeRandomOrb()
 	{
 		Random random = new Random();
-		int randNum = random.Next(1, 71);
+		int randNum = random.Next(1, 101);
 
-		if (randNum <= 35)
+		if (randNum <= 80)
 		{
-			// 50% chance of being small
+			// 80% chance of being small
 			BeSmall();
 		}
-		else if (randNum <= 60)
+		else if (randNum <= 95)
 		{
-			// 35.7% chance of being medium
+			// 15% chance of being medium
 			BeMedium();
 		}
 		else
 		{
-			// 14.2% chance of being large
+			// 5% chance of being large
 			BeLarge();
 		}
 	}
