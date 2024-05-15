@@ -6,7 +6,7 @@ public partial class EnemySpawner : Node
 	Timer timer;
 	PackedScene enemy;
 
-	int enemies = 1;
+	int enemies = 5;
 	public override void _Ready()
 	{
 		timer = GetNode<Timer>("Timer");

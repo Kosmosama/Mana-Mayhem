@@ -12,6 +12,8 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 	float damage = 10;
 	bool isPlayerWithinRange;
 
+	bool markedAsDead = false;
+
 	Player player;
 	Sprite2D sprite;
 	Timer timerAttackCooldown;
@@ -76,7 +78,11 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		}
 		else
 		{
-			OnDeath();
+			if (!markedAsDead)
+			{
+				OnDeath();
+				markedAsDead = true;
+			}
 			return false;
 		}
 	}

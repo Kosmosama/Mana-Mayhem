@@ -10,7 +10,6 @@ public partial class XpOrb : Area2D
 	{
 		get { return xpAmount; }
 	}
-	// on get, QueueFree?
 
 	Sprite2D sprite;
 

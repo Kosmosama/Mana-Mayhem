@@ -34,7 +34,7 @@ public partial class MagicBolt : Area2D
 		attackSize = 1;
 
 		// Stats
-		damage = 200 * damageAmplification;
+		damage = 2 * damageAmplification;
 		speed = 500f;
 		penetration = 0;
 
