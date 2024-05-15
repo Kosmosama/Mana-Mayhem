@@ -18,3 +18,7 @@ res://scripts/UI/settings/SettingsMenu.cs
 res://scripts/UI/settings/sound/SliderAudioVolume.cs
 res://scripts/utilities/AttackRange.cs
 res://scripts/utilities/HitBox.cs
+res://scenes/world/Xp/XpOrbSmall.tscn
+res://scenes/world/Xp/XpOrb.tscn
+res://scripts/world/Xp/XpOrbSmall.cs
+res://scripts/world/Xp/XpOrb.cs

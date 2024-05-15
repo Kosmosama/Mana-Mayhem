@@ -1,12 +1,12 @@
-Timer
 Node
-Area2D
-Node2D
+ProgressBar
 CollisionShape2D
+Area2D
 Sprite2D
+Timer
+Node2D
 RigidBody2D
 MarginContainer
-ProgressBar
 TextureProgressBar
 Label
 CheckBox

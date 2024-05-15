@@ -16,6 +16,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 	Sprite2D sprite;
 	Timer timerAttackCooldown;
 	Timer timerInvincibilityFrames;
+	PackedScene xpOrb;
 
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		sprite = GetNode<Sprite2D>("GFX");
 		timerAttackCooldown = GetNode<Timer>("TimerAttackCooldown");
 		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
+		xpOrb = (PackedScene)ResourceLoader.Load("res://scenes/world/Xp/XpOrb.tscn");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -98,9 +100,24 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 		return this.IsAlive() && timerInvincibilityFrames.IsStopped();
 	}
 
+	private void GenerateXpOrb()
+	{
+		Node xpOrbContainer = GetTree().GetNodesInGroup("XpOrbContainer")[0];
+
+		XpOrb instantiableXpOrb = (XpOrb)xpOrb.Instantiate();
+		instantiableXpOrb.Position = Position;
+
+		CallDeferred("add_xp_orb", xpOrbContainer, instantiableXpOrb);
+	}
+
+	private void add_xp_orb(Node parent, Node child)
+	{
+		parent.AddChild(child);
+	}
+
 	public void OnDeath()
 	{
-		// Enemy death logic (spawn xp)
+		GenerateXpOrb();
 		QueueFree();
 	}
 

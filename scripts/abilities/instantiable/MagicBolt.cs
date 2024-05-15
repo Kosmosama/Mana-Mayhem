@@ -35,7 +35,8 @@ public partial class MagicBolt : Area2D
 
 		// Stats
 		damage = 2 * damageAmplification;
-		speed = 400f;
+		speed = 500f;
+		penetration = 0;
 
 		timer.WaitTime = 2 * magicDuration;
 		timer.Start();
@@ -69,6 +70,14 @@ public partial class MagicBolt : Area2D
 		if (body is IEnemy enemy)
 		{
 			AttackEnemy(enemy);
+			if (penetration > 0)
+			{
+				penetration--;
+			}
+			else
+			{
+				QueueFree();
+			}
 		}
 	}
 }

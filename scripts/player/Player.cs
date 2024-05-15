@@ -14,6 +14,10 @@ public partial class Player : CharacterBody2D
 
 	[Export]
 	float damage = 1;
+	
+	int level = 1;
+	float xpCollected = 0;
+	float xpNeeded = 10;
 
 	List<IEnemy> enemiesWithinRange;
 	
@@ -21,12 +25,14 @@ public partial class Player : CharacterBody2D
 	Sprite2D sprite;
 	Timer timerInvincibilityFrames;
 	ProgressBar progressBarHp;
+	ProgressBar progressBarXp;
 
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("GFX");
 		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
-		progressBarHp = GetNode<ProgressBar>("ProgressBar");
+		progressBarHp = GetNode<ProgressBar>("ProgressBarHp");
+		progressBarXp = GetNode<ProgressBar>("ProgressBarXp");
 
 		enemiesWithinRange = new List<IEnemy>();
 
@@ -158,6 +164,45 @@ public partial class Player : CharacterBody2D
 		{
 			enemiesWithinRange.Remove(enemy);
 			OrderListByDistance();
+		}
+	}
+
+	private void LevelUp()
+	{
+		level++;
+		// #TODO make it so that a new ability is choosable
+	}
+
+	private void UpdateXpProgressBar()
+	{
+		progressBarXp.MaxValue = xpNeeded;
+		progressBarXp.Value = xpCollected;
+	}
+
+	private void CalculateXp(float xp)
+	{
+		// if amount exceeds max -> levelup, max + level * 2, amount%priorMax = amount
+		float newCollected = xpCollected + xp;
+		if (newCollected >= xpNeeded)
+		{
+			xpNeeded *= level * 2;
+			xpCollected = newCollected % xpNeeded;
+			LevelUp();
+		}
+		else
+		{
+			xpCollected = newCollected;
+		}
+
+		UpdateXpProgressBar();
+	}
+
+	private void OnXpOrbEntered(Area2D area)
+	{
+		if (area is XpOrb orb)
+		{
+			CalculateXp(orb.XpAmount);
+			area.QueueFree();
 		}
 	}
 }

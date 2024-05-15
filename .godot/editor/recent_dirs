@@ -1,3 +1,5 @@
+res://scripts/world/Xp
+res://scenes/world/Xp
 res://scripts/abilities/managers
 res://scenes/abilities/managers
 res://scripts/abilities
@@ -18,5 +20,3 @@ res://scenes/enemies
 res://scenes/player
 res://scripts/UI/Settings
 res://scenes/UI/Settings
-res://scripts/UI
-res://scenes/UI

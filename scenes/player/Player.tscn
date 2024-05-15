@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc5hl2lq8k6wy"]
+[gd_scene load_steps=13 format=3 uid="uid://dc5hl2lq8k6wy"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_i7hqg"]
 [ext_resource type="Texture2D" uid="uid://co7inp480ybni" path="res://sprites/player/Skeleton.png" id="2_3mkyc"]
@@ -36,8 +36,40 @@ corner_radius_bottom_left = 10
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ymw82")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xqdr5")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lykqk"]
+bg_color = Color(0, 0.215686, 0.466667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m74tr"]
+bg_color = Color(0.368627, 0.486275, 0.984314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_l5886"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_lykqk")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_m74tr")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_envao"]
 size = Vector2(33.9875, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xxnc"]
+radius = 57.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_i7hqg")
@@ -56,7 +88,7 @@ shape = SubResource("CircleShape2D_pfunc")
 wait_time = 0.25
 one_shot = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBarHp" type="ProgressBar" parent="."]
 z_index = 1
 custom_minimum_size = Vector2(100, 10)
 offset_left = -50.0
@@ -67,6 +99,18 @@ theme = SubResource("Theme_i14mw")
 theme_override_colors/font_color = Color(0.909804, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.854902, 0, 0, 1)
 value = 100.0
+show_percentage = false
+
+[node name="ProgressBarXp" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 10)
+offset_left = -30.0
+offset_top = 57.0
+offset_right = 70.0
+offset_bottom = 84.0
+scale = Vector2(0.58037, 0.341462)
+theme = SubResource("Theme_l5886")
+max_value = 10.0
+step = 0.001
 show_percentage = false
 
 [node name="AbilityList" type="Node2D" parent="."]
@@ -80,6 +124,14 @@ visible = false
 scale = Vector2(54, 52)
 shape = SubResource("RectangleShape2D_envao")
 
+[node name="CollectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionRange"]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_7xxnc")
+
 [connection signal="timeout" from="TimerInvincibilityFrames" to="." method="OnInvincibilityTimeout"]
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEntered"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExited"]
+[connection signal="area_entered" from="CollectionRange" to="." method="OnXpOrbEntered"]
