@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c04u7it5ggk1s"]
+[gd_scene load_steps=8 format=3 uid="uid://c04u7it5ggk1s"]
 
 [ext_resource type="PackedScene" uid="uid://dc5hl2lq8k6wy" path="res://scenes/player/Player.tscn" id="1_dxlsb"]
 [ext_resource type="Texture2D" uid="uid://bky53krybqkck" path="res://sprites/world/WorldBackgroundTiles.png" id="1_e8ol0"]
+[ext_resource type="FontFile" uid="uid://0o8nryuwpg0y" path="res://fonts/PeaberryMono.ttf" id="2_0u565"]
+[ext_resource type="Script" path="res://scripts/world/LabelTimerWorld.cs" id="2_rwcw6"]
 [ext_resource type="Script" path="res://scripts/utilities/EnemySpawner.cs" id="4_gwnpy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uco20"]
@@ -268,9 +270,36 @@ sources/0 = SubResource("TileSetAtlasSource_uco20")
 
 [node name="World" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LabelTimerWorld" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(101, 30)
+layout_mode = 2
+auto_translate = false
+theme_override_fonts/font = ExtResource("2_0u565")
+theme_override_font_sizes/font_size = 100
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_rwcw6")
+
 [node name="Player" parent="." instance=ExtResource("1_dxlsb")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+scale = Vector2(2.89495, 0.530954)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -294,4 +323,8 @@ script = ExtResource("4_gwnpy")
 [node name="Timer" type="Timer" parent="EnemySpawner"]
 autostart = true
 
+[node name="TimerWorld" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="OnTimerTimeout"]
+[connection signal="timeout" from="TimerWorld" to="CanvasLayer/MarginContainer/CenterContainer/LabelTimerWorld" method="OnWorldTimerTimeout"]

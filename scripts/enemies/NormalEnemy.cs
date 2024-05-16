@@ -132,7 +132,6 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 	{
 		if (body is Player)
 		{
-			GD.Print("Player within range");
 			isPlayerWithinRange = true;
 		}
 	}
@@ -141,7 +140,6 @@ public partial class NormalEnemy : CharacterBody2D, IEnemy
 	{
 		if (body is Player)
 		{
-			GD.Print("Player exited range");
 			isPlayerWithinRange = false;
 		}
 	}

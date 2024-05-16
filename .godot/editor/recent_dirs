@@ -1,3 +1,5 @@
+res://scripts/world
+res://scenes/world
 res://scripts/utilities
 res://scripts/world/Xp
 res://scenes/world/Xp
@@ -18,5 +20,3 @@ res://scripts/UI/Settings/Graphics
 res://scenes/UI/Settings/Graphics
 res://scenes/enemies
 res://scenes/player
-res://scripts/UI/Settings
-res://scenes/UI/Settings

@@ -66,21 +66,6 @@ public partial class MagicBoltManager : Node
 					positions.Add(closestEnemies[i].GetPosition());
 				}
 			}
-			// else
-			// {
-			// 	for (int i = 0; i < (closestEnemies.Count / numberOfCloseEnemies); i++)
-			// 	{
-			// 		foreach (IEnemy enemy in closestEnemies)
-			// 		{
-			// 			positions.Add(enemy.GetPosition());
-			// 		}
-			// 	}
-
-			// 	for (int j = 0; j < (numberOfCloseEnemies - positions.Count); j++)
-			// 	{
-			// 		positions.Add(closestEnemies[j].GetPosition());
-			// 	}
-			// }
 			else
 			{
 				int repeats = numberOfCloseEnemies / closestEnemies.Count;

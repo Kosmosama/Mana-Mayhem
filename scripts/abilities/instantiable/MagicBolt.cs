@@ -43,7 +43,7 @@ public partial class MagicBolt : Area2D
 
 		// Animation
 		tween = CreateTween();
-		tween.TweenProperty(this,"scale",new Vector2(1,1)*attackSize,0.6f).SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(this,"scale",new Vector2(1,1)*attackSize,0.7f).SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.Out);
 		tween.Play();
 	}
 

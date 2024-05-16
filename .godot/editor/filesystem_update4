@@ -1,3 +1,4 @@
+res://scenes/world/Xp/XpOrb.tscn
 res://scenes/world/World.tscn
 res://scenes/utilities/EnemySpawner.tscn
 res://scenes/player/Player.tscn
@@ -16,10 +17,6 @@ res://scripts/UI/settings/graphics/ButtonWindowMode.cs
 res://scripts/UI/settings/graphics/CheckBoxVsync.cs
 res://scripts/UI/settings/SettingsMenu.cs
 res://scripts/UI/settings/sound/SliderAudioVolume.cs
-res://scripts/utilities/AttackRange.cs
-res://scripts/utilities/HitBox.cs
-res://scenes/world/Xp/XpOrbSmall.tscn
-res://scenes/world/Xp/XpOrb.tscn
-res://scripts/world/Xp/XpOrbSmall.cs
-res://scripts/world/Xp/XpOrb.cs
 res://scripts/utilities/EnemySpawner.cs
+res://scripts/world/Xp/XpOrb.cs
+res://scripts/world/LabelTimerWorld.cs
