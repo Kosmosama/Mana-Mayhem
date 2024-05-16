@@ -3,6 +3,7 @@ using System;
 
 public partial class SliderAudioVolume : Control
 {
+
 	[Export(PropertyHint.Enum, "Master,Music,SFX")]
 	public string BusName { get; set; } = "Master";
 	int busIndex = 0;

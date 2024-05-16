@@ -14,5 +14,6 @@ public partial class SettingsMenu : Control
 	private void OnButtonBackPressed()
 	{
 		EmitSignal(nameof(BackPressed));
+		SettingsSignalBus.Instance.EmitOnSetSettingsDictionary(SettingsDataContainer.Instance.CreateStorageDictionary());
 	}
 }

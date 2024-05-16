@@ -20,3 +20,7 @@ res://scripts/UI/settings/sound/SliderAudioVolume.cs
 res://scripts/utilities/EnemySpawner.cs
 res://scripts/world/Xp/XpOrb.cs
 res://scripts/world/LabelTimerWorld.cs
+res://scenes/UI/settings/SettingsTab.tscn
+res://autoload/SettingsDataContainer.cs
+res://autoload/SaveManager.cs
+res://data/settings.json

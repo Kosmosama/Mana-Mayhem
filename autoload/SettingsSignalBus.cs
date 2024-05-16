@@ -1,10 +1,13 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
 public partial class SettingsSignalBus : Node
 {
-    // #TODO
+    public static SettingsSignalBus Instance { get; private set; }
+    public override void _Ready() { Instance = this; }
+
     // Graphics
 
 	[Signal]
@@ -27,12 +30,37 @@ public partial class SettingsSignalBus : Node
     // Save/Load
 
     [Signal]
-	public delegate void CreateSettingsDictionaryEventHandler(float settingsDictionary); // Yet to know
+	public delegate void SetSettingsDictionaryEventHandler(Dictionary settingsDictionary);
 
-    // Signal-Emitters
+    // Signal-Emision
+
+    public void EmitOnSetSettingsDictionary(Dictionary settingsDictionary)
+    {
+        EmitSignal(SignalName.SetSettingsDictionary, settingsDictionary);
+    }
 
     public void EmitOnWindowModeSelected(int index)
     {
-        EmitSignal("OnWindowModeSelected", index);
+        EmitSignal(SignalName.OnWindowModeSelected, index);
+    }
+
+    public void EmitResolutionSelected(int index)
+    {
+        EmitSignal(SignalName.OnResolutionSelected, index);
+    }
+
+    public void EmitOnMasterSoundVolumeSet(float volume)
+    {
+        EmitSignal(SignalName.OnMasterSoundVolumeSet, volume);
+    }
+
+    public void EmitOnMusicSoundVolumeSet(float volume)
+    {
+        EmitSignal(SignalName.OnMusicSoundVolumeSet, volume);
+    }
+
+    public void EmitOnSfxSoundVolumeSet(float volume)
+    {
+        EmitSignal(SignalName.OnSfxSoundVolumeSet, volume);
     }
 }
