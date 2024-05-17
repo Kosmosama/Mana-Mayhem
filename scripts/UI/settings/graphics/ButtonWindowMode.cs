@@ -28,8 +28,9 @@ public partial class ButtonWindowMode : Control
 		}
 	}
 
-	private void OnWindowModeSelected(long index)
+	private void OnWindowModeSelected(int index)
 	{
+		SettingsSignalBus.Instance.EmitOnWindowModeSelected(index);
 		switch (index)
 		{
 			case 0: // Full-Screen

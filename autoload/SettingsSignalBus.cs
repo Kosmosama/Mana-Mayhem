@@ -32,7 +32,15 @@ public partial class SettingsSignalBus : Node
     [Signal]
 	public delegate void SetSettingsDictionaryEventHandler(Dictionary settingsDictionary);
 
+    [Signal]
+	public delegate void LoadSettingsDataEventHandler(Dictionary settingsDictionary);
+
     // Signal-Emision
+
+    public void EmitOnLoadSettingsDictionary(Dictionary settingsDictionary)
+    {
+        EmitSignal(SignalName.LoadSettingsData, settingsDictionary);
+    }
 
     public void EmitOnSetSettingsDictionary(Dictionary settingsDictionary)
     {

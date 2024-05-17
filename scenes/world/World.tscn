@@ -317,7 +317,7 @@ layer_0/tile_data = PackedInt32Array(-2162748, 851968, 11, -2097212, 589824, 7, 
 
 [node name="XpOrbs" type="Node" parent="." groups=["XpOrbContainer"]]
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("4_gwnpy")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]

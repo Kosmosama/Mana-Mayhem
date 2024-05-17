@@ -3,7 +3,6 @@ using System;
 
 public partial class SliderAudioVolume : Control
 {
-
 	[Export(PropertyHint.Enum, "Master,Music,SFX")]
 	public string BusName { get; set; } = "Master";
 	int busIndex = 0;
@@ -37,5 +36,18 @@ public partial class SliderAudioVolume : Control
 	private void OnSliderValueChanged(double value)
 	{
 		AudioServer.SetBusVolumeDb(busIndex, Mathf.DbToLinear((float) value));
+
+		switch (busIndex)
+		{
+			case 0:
+				SettingsSignalBus.Instance.EmitOnMasterSoundVolumeSet((float) value);
+				break;
+			case 1:
+				SettingsSignalBus.Instance.EmitOnMusicSoundVolumeSet((float) value);
+				break;
+			case 2:
+				SettingsSignalBus.Instance.EmitOnSfxSoundVolumeSet((float) value);
+				break;
+		}
 	}
 }

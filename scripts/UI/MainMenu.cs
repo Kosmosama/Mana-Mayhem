@@ -13,6 +13,8 @@ public partial class MainMenu : Control
 		marginContainer = GetNode<MarginContainer>("MarginContainer");
 
 		mainScene = ResourceLoader.Load("res://scenes/world/World.tscn") as PackedScene;
+
+		// SettingsDataContainer.Instance.OnSettingsDataLoaded(SaveManager.Instance.LoadSettingsData()); Gives error
 	}
 
 	private void OnButtonPlayPressed()

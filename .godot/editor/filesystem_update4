@@ -1,10 +1,13 @@
-res://scenes/world/Xp/XpOrb.tscn
 res://scenes/world/World.tscn
+res://data/settings.json
 res://scenes/utilities/EnemySpawner.tscn
 res://scenes/player/Player.tscn
 res://scenes/enemies/Enemy.tscn
 res://scenes/abilities/instantiable/MagicBolt.tscn
 res://scenes/abilities/managers/MagicBoltManager.tscn
+res://scenes/world/Xp/XpOrb.tscn
+res://autoload/SaveManager.cs
+res://autoload/SettingsDataContainer.cs
 res://autoload/SettingsSignalBus.cs
 res://scripts/abilities/instantiable/MagicBolt.cs
 res://scripts/abilities/managers/MagicBoltManager.cs
@@ -18,9 +21,6 @@ res://scripts/UI/settings/graphics/CheckBoxVsync.cs
 res://scripts/UI/settings/SettingsMenu.cs
 res://scripts/UI/settings/sound/SliderAudioVolume.cs
 res://scripts/utilities/EnemySpawner.cs
-res://scripts/world/Xp/XpOrb.cs
 res://scripts/world/LabelTimerWorld.cs
-res://scenes/UI/settings/SettingsTab.tscn
-res://autoload/SettingsDataContainer.cs
-res://autoload/SaveManager.cs
-res://data/settings.json
+res://scripts/world/Xp/XpOrb.cs
+res://scenes/UI/settings/sounds/SliderAudioVolume.tscn

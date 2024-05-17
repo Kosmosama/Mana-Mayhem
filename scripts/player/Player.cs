@@ -26,9 +26,12 @@ public partial class Player : CharacterBody2D
 	Timer timerInvincibilityFrames;
 	ProgressBar progressBarHp;
 	ProgressBar progressBarXp;
+	PackedScene mainMenu;
 
 	public override void _Ready()
 	{
+		mainMenu = ResourceLoader.Load("res://scenes/UI/MainMenu.tscn") as PackedScene;
+
 		sprite = GetNode<Sprite2D>("GFX");
 		timerInvincibilityFrames = GetNode<Timer>("TimerInvincibilityFrames");
 		progressBarHp = GetNode<ProgressBar>("ProgressBarHp");
@@ -115,8 +118,7 @@ public partial class Player : CharacterBody2D
 
 	public void OnDeath()
 	{
-		// Player death logic
-		GetTree().Quit();
+		GetTree().ChangeSceneToPacked(mainMenu);
 	}
 
 	private void OnInvincibilityTimeout()
