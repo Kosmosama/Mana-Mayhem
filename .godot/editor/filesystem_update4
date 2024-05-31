@@ -6,13 +6,14 @@ res://scenes/enemies/Enemy.tscn
 res://scenes/abilities/instantiable/MagicBolt.tscn
 res://scenes/abilities/managers/MagicBoltManager.tscn
 res://scenes/world/Xp/XpOrb.tscn
+res://scenes/UI/settings/sounds/SliderAudioVolume.tscn
+res://scripts/player/Player.cs
+res://scripts/enemies/NormalEnemy.cs
 res://autoload/SaveManager.cs
 res://autoload/SettingsDataContainer.cs
 res://autoload/SettingsSignalBus.cs
 res://scripts/abilities/instantiable/MagicBolt.cs
 res://scripts/abilities/managers/MagicBoltManager.cs
-res://scripts/enemies/NormalEnemy.cs
-res://scripts/player/Player.cs
 res://scripts/UI/MainMenu.cs
 res://scripts/UI/settings/controls/ButtonBindHotKey.cs
 res://scripts/UI/settings/graphics/ButtonResolutionMode.cs
@@ -23,4 +24,3 @@ res://scripts/UI/settings/sound/SliderAudioVolume.cs
 res://scripts/utilities/EnemySpawner.cs
 res://scripts/world/LabelTimerWorld.cs
 res://scripts/world/Xp/XpOrb.cs
-res://scenes/UI/settings/sounds/SliderAudioVolume.tscn

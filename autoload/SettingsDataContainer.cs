@@ -4,7 +4,6 @@ using System;
 
 public partial class SettingsDataContainer : Node
 {
-
     public static SettingsDataContainer Instance { get; private set; }
     public override void _Ready() 
     { 

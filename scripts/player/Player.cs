@@ -197,12 +197,6 @@ public partial class Player : CharacterBody2D
 		}
 
 		UpdateXpProgressBar();
-		
-		// Xp debug prints
-		// GD.Print("----------------------");
-		// GD.Print(newCollected);
-		// GD.Print(xpNeeded);
-		// GD.Print(level);
 	}
 
 	private void OnXpOrbEntered(Area2D area)
